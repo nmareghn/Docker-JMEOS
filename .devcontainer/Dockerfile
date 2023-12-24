@@ -2,7 +2,7 @@ FROM debian:bookworm-slim
 MAINTAINER nidhalmareghni8@gmail.com
 
 # install corretto after verifying that the key is the one we expect.
-RUN sudo apt-get -y update \
+RUN apt-get update && apt-get install -y sudo \
   && sudo apt-get install -y git curl gnupg build-essential tree vim cmake postgresql-server-dev-15 libproj-dev libjson-c-dev libgsl-dev libgeos-dev postgis \
   && sudo export GNUPGHOME="$(mktemp -d)" \
   && sudo curl -fL https://apt.corretto.aws/corretto.key | gpg --batch --import \
